@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "User List";
+}
+@model List<UserData>
+
+<h1>User List</h1>
+
+@if (Model.Count == 0)
+{
+    <p><em>No users to display</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Cellphone number</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Cellnumber</td>
+                    <td><a class="btn btn-primary" asp-controller="Home" asp-action="Update" asp-route-id="@user.Id"> Edit</a></td>
+                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@user.Id"> Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
